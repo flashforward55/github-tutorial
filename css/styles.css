@@ -1,27 +1,22 @@
-table {
-  box-shadow: 2px 2px 2px 2px hsla(0, 0%, 0%, 0.2);
-  margin: 3rem;
-  font-family: sans-serif;
-  border-collapse: collapse;
+body {
+    font-family: sans-serif;
+    line-height: 1.5;
 }
 
-caption {
-  font-size: 20px;
-  margin-bottom: 1rem;
+.alert {
+    --alert-text-color: black;
+
+    color: var(--alert-text-color);
 }
 
-thead {
-  background-color: #555;
-  color: #fff;
+.success {
+    --alert-text-color: green;
 }
 
-td,
-th {
-  padding: 0.5rem 1rem;
-  border: 1px solid #888;
-  text-align: center;
+.warning {
+    --alert-text-color: orange;
 }
 
-td[colspan] {
-  background-color: #eee;
+.error {
+    --alert-text-color: red;
 }
