@@ -1,22 +1,7 @@
-body {
-    font-family: sans-serif;
-    line-height: 1.5;
+.headline.title {
+    color: navy;
 }
 
-.alert {
-    --alert-text-color: black;
-
-    color: var(--alert-text-color);
-}
-
-.success {
-    --alert-text-color: green;
-}
-
-.warning {
-    --alert-text-color: orange;
-}
-
-.error {
-    --alert-text-color: red;
+.title[title] {
+    color: maroon;
 }
