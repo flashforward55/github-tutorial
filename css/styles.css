@@ -1,15 +1,26 @@
-.left {
-    text-align: left;
+.list {
+    display: flex;
+
 }
 
-.right {
-    text-align: right;
-}
-
-.center {
+.list-item {
+    border-radius: 50%;
+    width: 20px;
+    height: auto;
+    list-style-type: none;
     text-align: center;
+    font-size: 50px;
+    font-style: arial;
+    line-height: 2;
+    padding: 10px 10px;
+    width: 100px;
+    height: 100px;
+    border: 2px solid #CBCBCB;
+    margin-left: 15px;
 }
 
-.justify {
-    text-align: justify;
+.list-item:nth-of-type(-n+3) {
+    background-color: #FF6348;
+    color: #fff;
+    border: none;
 }
