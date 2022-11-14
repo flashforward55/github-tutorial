@@ -1,32 +1,52 @@
-body {
-    font-size: 20px;
-}
-
-/* 
-  ширина container 480 
-  или 3 раза по 160   
-*/
-.container {
-    width: 90%;
-    margin: auto;
-    padding: 15px 0;
-    background: burlywood;
+* {
     box-sizing: border-box;
-    display: flex;
-    justify-content: flex-end;
 }
 
-.box {
-    width: 130px;
-    min-height: 75px;
-    background-color: teal;
-    color: #fff;
+body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: #f9f9fd;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 15px
+    padding: 20px;
 }
 
-.box-left {
-    margin-right: auto;
+.post {
+    position: relative;
+    max-width: 600px;
+    padding: 20px;
+    border-radius: 4px;
+    line-height: 1.5;
+    font-family: sans-serif;
+    background-color: #fff;
+}
+
+.post:before,
+.post:after {
+    z-index: -1;
+    position: absolute;
+    content: "";
+    bottom: 15px;
+    left: 10px;
+    width: 50%;
+    top: 80%;
+    max-width: 300px;
+    background: #777;
+    box-shadow: 0 15px 10px #777;
+    transform: rotate(-3deg);
+}
+
+.post:after {
+    transform: rotate(3deg);
+    right: 10px;
+    left: auto;
+}
+
+.post-title {
+    margin-top: 0;
+}
+
+.post-text {
+    margin-bottom: 0;
 }
