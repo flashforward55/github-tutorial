@@ -1,52 +1,24 @@
-* {
-    box-sizing: border-box;
+.controls {
+    padding: 1rem;
+    text-align: center;
 }
 
-body {
-    margin: 0;
-    min-height: 100vh;
-    background-color: #f9f9fd;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+.btn {
+    padding: .5rem 1.75rem;
+    border: none;
+    background: linear-gradient(hsl(120, 100%, 35%),
+            hsl(120, 100%, 20%));
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 3px 3px 3px 3px hsla(0, 0%, 0%, .1);
 }
 
-.post {
-    position: relative;
-    max-width: 600px;
-    padding: 20px;
-    border-radius: 4px;
-    line-height: 1.5;
-    font-family: sans-serif;
-    background-color: #fff;
+.btn:hover,
+.btn:focus {
+    box-shadow: 1px 1px 1px 1px hsla(0, 0%, 0%, .3);
 }
 
-.post:before,
-.post:after {
-    z-index: -1;
-    position: absolute;
-    content: "";
-    bottom: 15px;
-    left: 10px;
-    width: 50%;
-    top: 80%;
-    max-width: 300px;
-    background: #777;
-    box-shadow: 0 15px 10px #777;
-    transform: rotate(-3deg);
-}
-
-.post:after {
-    transform: rotate(3deg);
-    right: 10px;
-    left: auto;
-}
-
-.post-title {
-    margin-top: 0;
-}
-
-.post-text {
-    margin-bottom: 0;
+.btn:active {
+    box-shadow: inset 3px 3px 3px 3px hsla(0, 0%, 0%, .3);
 }
