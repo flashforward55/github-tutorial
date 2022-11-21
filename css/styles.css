@@ -1,23 +1,40 @@
-:root {
-    --primary: burlywood;
-    --accent: cadetblue;
-}
-
-.items {
-    list-style: none;
+.box {
     display: flex;
-}
-
-.item {
-    margin: 0.25rem;
-    display: block;
-    padding: 0.5rem;
+    --s: 60px;
+    width: var(--s);
+    height: var(--s);
     border-radius: 50%;
-    background-color: var(--primary);
+    position: absolute;
 }
 
-.icon {}
+.inner {
+    margin: auto;
+    --s: 30px;
+    width: var(--s);
+    height: var(--s);
+    border-radius: 50%;
+    background-color: orange;
+    z-index: 100;
+}
 
-.item:hover {
-    background-color: var(--accent);
+.alfa {
+    background-color: crimson;
+    top: 30px;
+    left: 5px;
+    z-index: 30;
+}
+
+.beta {
+    background-color: slateblue;
+    left: 25px;
+    z-index: 20;
+
+}
+
+.gamma {
+    top: 30px;
+    left: 45px;
+    background-color: mediumseagreen;
+    z-index: 10;
+
 }
