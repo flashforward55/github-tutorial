@@ -1,24 +1,23 @@
-.controls {
-    padding: 1rem;
-    text-align: center;
+:root {
+    --primary: burlywood;
+    --accent: cadetblue;
 }
 
-.btn {
-    padding: .5rem 1.75rem;
-    border: none;
-    background: linear-gradient(hsl(120, 100%, 35%),
-            hsl(120, 100%, 20%));
-    color: #fff;
-    font-size: 20px;
-    cursor: pointer;
-    box-shadow: 3px 3px 3px 3px hsla(0, 0%, 0%, .1);
+.items {
+    list-style: none;
+    display: flex;
 }
 
-.btn:hover,
-.btn:focus {
-    box-shadow: 1px 1px 1px 1px hsla(0, 0%, 0%, .3);
+.item {
+    margin: 0.25rem;
+    display: block;
+    padding: 0.5rem;
+    border-radius: 50%;
+    background-color: var(--primary);
 }
 
-.btn:active {
-    box-shadow: inset 3px 3px 3px 3px hsla(0, 0%, 0%, .3);
+.icon {}
+
+.item:hover {
+    background-color: var(--accent);
 }
