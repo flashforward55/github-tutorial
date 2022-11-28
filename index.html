@@ -7,18 +7,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/styles.css" />
     <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap" rel="stylesheet" />
-    <title>Студія</title>
+    <title>Автопроверки</title>
 </head>
 
 <body>
-
-    <div class="container">
-        <div class="row fadeInFromLeft"></div>
-        <div class="row fadeInFromRight"></div>
-        <div class="row fadeInFromLeft"></div>
-        <div class="row fadeInFromRight"></div>
-    </div>
-
+    <form action="javascript:void(0);">
+        <label for="myBrowser">Browser selection</label>
+        <input id="myBrowser" name="myBrowser" list="browsers" />
+        <datalist id="browsers">
+            <option>Chrome</option>
+            <option>Firefox</option>
+            <option>Internet Explorer</option>
+            <option>Opera</option>
+            <option>Safari</option>
+            <option>Microsoft Edge</option>
+        </datalist>
+    </form>
 </body>
 <script src="./js/script.js"></script>
 
