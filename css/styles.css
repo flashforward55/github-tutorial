@@ -1,40 +1,70 @@
-.box {
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    text-align: center;
+    background-color: #f9f9fd;
+}
+
+h1 {
+    font-size: 24px;
+}
+
+.container {
     display: flex;
-    --s: 60px;
-    width: var(--s);
-    height: var(--s);
-    border-radius: 50%;
-    position: absolute;
+    justify-content: center;
 }
 
-.inner {
-    margin: auto;
-    --s: 30px;
-    width: var(--s);
-    height: var(--s);
-    border-radius: 50%;
-    background-color: orange;
-    z-index: 100;
+.box {
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    margin: 5px;
+
+    line-height: 150px;
+    font-size: 20px;
+    text-align: center;
+    user-select: none;
+
+    background-color: #fff;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+        0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+
+    animation-name: changeBgColor;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-delay: 1s;
 }
 
-.alfa {
-    background-color: crimson;
-    top: 30px;
-    left: 5px;
-    z-index: 30;
+.box:nth-child(1) {
+    /*  Значение по умолчанию  */
+    animation-fill-mode: none;
 }
 
-.beta {
-    background-color: slateblue;
-    left: 25px;
-    z-index: 20;
-
+.box:nth-child(2) {
+    animation-fill-mode: forwards;
 }
 
-.gamma {
-    top: 30px;
-    left: 45px;
-    background-color: mediumseagreen;
-    z-index: 10;
+.box:nth-child(3) {
+    animation-fill-mode: backwards;
+}
 
+.box:nth-child(4) {
+    animation-fill-mode: both;
+}
+
+@keyframes changeBgColor {
+    0% {
+        background-color: teal;
+    }
+
+    50% {
+        background-color: orange;
+    }
+
+    100% {
+        background-color: deepskyblue;
+    }
 }
