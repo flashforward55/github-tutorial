@@ -11,18 +11,27 @@
 </head>
 
 <body>
-    <form action="javascript:void(0);">
-        <label for="myBrowser">Browser selection</label>
-        <input id="myBrowser" name="myBrowser" list="browsers" />
-        <datalist id="browsers">
-            <option>Chrome</option>
-            <option>Firefox</option>
-            <option>Internet Explorer</option>
-            <option>Opera</option>
-            <option>Safari</option>
-            <option>Microsoft Edge</option>
-        </datalist>
+
+    <form action="javascript:void(0);" method="POST">
+        <label>
+            <span>Имя</span>
+            <input type="text" name="name" placeholder="Имя" />
+        </label>
+        <label>
+            <span>Почта</span>
+            <input type="email" name="email" required placeholder="Электронная почта" />
+        </label>
+        <label>
+            <span>Пароль</span>
+            <input type="password" name="password" required placeholder="Пароль от 3 до 5 символов" pattern=".{3,5}"
+                title="от 3 до 5 символов" />
+        </label>
+        <div class="buttons">
+            <button type="submit">отправить</button>
+            <button type="reset">обновить</button>
+        </div>
     </form>
+
 </body>
 <script src="./js/script.js"></script>
 

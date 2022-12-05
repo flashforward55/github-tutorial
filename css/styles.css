@@ -1,4 +1,93 @@
+form {
+    max-width: 360px;
+    margin: auto;
+    padding: 1rem 2rem 1rem 1rem;
+    border-radius: .25rem;
+    box-shadow: 2px 2px 6px 3px hsla(0, 0%, 0%, .2);
+    font-family: sans-serif;
+    text-transform: uppercase;
+}
+
+.buttons,
+label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+label {
+    margin-bottom: 1.5rem;
+}
+
+label span {
+    opacity: .6;
+}
+
+input {
+    border: 2px solid lavender;
+    padding: 4px;
+    border-radius: .25rem;
+}
+
 button {
-    display: block;
-    margin: 1rem;
+    padding: .5rem 1.75rem;
+    border-radius: .25rem;
+    text-transform: uppercase;
+    border: none;
+    outline: none;
+    opacity: .6;
+    background-color: gray;
+    color: #fff;
+}
+
+button:hover {
+    background-color: gray;
+    opacity: 1;
+}
+
+/* placeholder */
+input::placeholder {
+    /* Напиши код под этой строкой; */
+    color: rebeccapurple;
+}
+
+/* focus-within */
+label:focus-within span {
+    opacity: 1;
+}
+
+form:focus-within button[type="submit"] {
+    opacity: .6;
+    background-color: seagreen;
+}
+
+form:focus-within button[type="reset"] {
+    opacity: .6;
+    background-color: crimson;
+}
+
+form:focus-within {
+    box-shadow: 1px 1px 2px 2px hsla(0, 0%, 0%, .3);
+}
+
+/* valid */
+form:valid button {
+    color: #fff;
+    pointer-events: none;
+}
+
+/* combination  */
+form:focus-within:valid button {
+    opacity: 1;
+}
+
+input:not(:placeholder-shown):valid {
+    /* Напиши код под этой строкой; */
+    border-color: seagreen;
+
+}
+
+input:not(:placeholder-shown):invalid {
+    /* Напиши код под этой строкой; */
+    border-color: crimson;
 }
