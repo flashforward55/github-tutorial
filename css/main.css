@@ -1,102 +1,52 @@
-* {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+:root {
+  --tablet: calc(100% / 2 - 2 * 15px);
+  --desktop: calc(100% / 4 - 2 * 15px);
 }
 
-body {
-  font-family: sans-serif;
+.container-fluid {
+  min-height: 100px;
+  padding: 1rem 0;
+  background-color: darkseagreen;
 }
 
-/* 
- * Base container and element styles for mobile devices.
- * All blocks go underneath each other, so there are no unnecessary flexbox styles.
- */
 .container {
-  max-width: 1170px;
-  min-width: 320px;
-  margin-left: auto;
-  margin-right: auto;
-  border: 1px solid black;
-  border-radius: 10px;
-  padding: 10px;
+  width: 90%;
+  margin: auto;
+  padding: 30px 0 15px;
+  background-color: aliceblue;
 }
 
-.element {
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  font-size: 24px;
+.card {
+  max-width: calc(90% - 30px);
+  min-width: 280px;
+  height: 50px;
+  margin: 0 auto 15px;
+  background-color: green;
   color: #fff;
+  text-align: center;
+  line-height: 50px;
 }
 
-/*
- * Limit the bottom padding styles to 0-767 pixels.
- */
-@media screen and (max-width: 767px) {
-  .element:not(:last-child) {
-    margin-bottom: 15px;
-  }
-}
-/*
- * Tablet styles
- */
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 360px) {
   .container {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: space-center;
+        -ms-flex-pack: space-center;
+            justify-content: space-center;
+    padding-left: 15px;
+    padding-right: 15px;
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
   }
-  .element {
-    -ms-flex-preferred-size: 50%;
-        flex-basis: 50%;
-    font-size: 32px;
+  .card {
+    margin: 0 15px 15px;
+    min-width: var(--tablet);
   }
 }
-/*
- * Limit border styles to 768-1023 pixels.
- */
-@media screen and (min-width: 768px) and (max-width: 1023px) {
-  .element {
-    border: 20px solid rgba(0, 0, 0, 0.25);
+@media screen and (min-width: 580px) {
+  .card {
+    min-width: var(--desktop);
   }
-}
-/*
- * Desktop styles
- */
-@media screen and (min-width: 1024px) {
-  .element {
-    -ms-flex-preferred-size: 33.3333333333%;
-        flex-basis: 33.3333333333%;
-  }
-}
-/*
- * SASS loop for background generation
- */
-.element:nth-child(1) {
-  background-color: #F44336;
-}
-
-.element:nth-child(2) {
-  background-color: #3F51B5;
-}
-
-.element:nth-child(3) {
-  background-color: #4CAF50;
-}
-
-.element:nth-child(4) {
-  background-color: #00BCD4;
-}
-
-.element:nth-child(5) {
-  background-color: #E91E63;
-}
-
-.element:nth-child(6) {
-  background-color: #009688;
 }/*# sourceMappingURL=main.css.map */

@@ -1,85 +1,50 @@
-* {
-  box-sizing: border-box;
+:root {
+    --tablet: calc(100% / 2 - 2 * 15px);
+    --desktop: calc(100% / 4 - 2 * 15px);
 }
 
-body {
-  font-family: sans-serif;
+.container-fluid {
+    min-height: 100px;
+    padding: 1rem 0;
+    background-color: darkseagreen;
 }
 
-/* 
- * Base container and element styles for mobile devices.
- * All blocks go underneath each other, so there are no unnecessary flexbox styles.
- */
 .container {
-  max-width: 1170px;
-  min-width: 320px;
-  margin-left: auto;
-  margin-right: auto;
-  border: 1px solid black;
-  border-radius: 10px;
-  padding: 10px;
+    width: 90%;
+    margin: auto;
+    padding: 30px 0 15px;
+    background-color: aliceblue;
 }
 
-.element {
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  font-size: 24px;
-  color: #fff;
+.card {
+    max-width: calc(90% - 2 * 15px);
+    min-width: 280px;
+    height: 50px;
+    margin: 0 auto 15px;
+    background-color: green;
+    color: #fff;
+    text-align: center;
+    line-height: 50px;
 }
 
-/*
- * Limit the bottom padding styles to 0-767 pixels.
- */
-@media screen and (max-width: 767px) {
-  .element:not(:last-child) {
-    margin-bottom: 15px;
-  }
+@media screen and (min-width: 360px) {
+    .container {
+        display: flex;
+        justify-content: space-center;
+        padding-left: 15px;
+        padding-right: 15px;
+        flex-wrap: wrap;
+    }
+
+    .card {
+        margin: 0 15px 15px;
+        min-width: var(--tablet)
+    }
 }
 
-/*
- * Tablet styles
- */
-@media screen and (min-width: 768px) {
-  .container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+@media screen and (min-width: 580px) {
+    .card {
+        min-width: var(--desktop);
 
-  .element {
-    flex-basis: calc(100% / 2);
-    font-size: 32px;
-  }
-}
-
-/*
- * Limit border styles to 768-1023 pixels.
- */
-@media screen and (min-width: 768px) and (max-width: 1023px) {
-  .element {
-    border: 20px solid rgba(0, 0, 0, 0.25);
-  }
-}
-
-/*
- * Desktop styles
- */
-@media screen and (min-width: 1024px) {
-  .element {
-    flex-basis: calc(100% / 3);
-  }
-}
-
-/*
- * SASS loop for background generation
- */
-$colors: "#F44336", "#3F51B5", "#4CAF50", "#00BCD4", "#E91E63", "#009688";
-
-@each $color in $colors {
-  $idx: index($colors, $color);
-
-  .element:nth-child(#{$idx}) {
-    background-color: #{$color};
-  }
+    }
 }
