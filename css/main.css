@@ -1,15 +1,4 @@
-body {
-  padding: 1rem;
-}
-
-img {
-  display: block;
-  width: 100%;
-  margin: auto;
-}
-
-@media screen and (min-width: 550px) {
-  img {
-    max-width: 550px;
-  }
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
 }/*# sourceMappingURL=main.css.map */
