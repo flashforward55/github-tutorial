@@ -1,17 +1,4 @@
-const products = [
-    { name: 'Radar', price: 1300, quantity: 4 },
-    { name: 'Scanner', price: 2700, quantity: 3 },
-    { name: 'Droid', price: 400, quantity: 7 },
-    { name: 'Grip', price: 1200, quantity: 9 },
-];
-
-function getProductPrice(productName) {
-    for (const product of products) {
-        if (product.name === productName) {
-            return product.price;
-        }
-    }
-    return null;
-}
-
-getProductPrice('Scanner');
+// Декларативный подход
+const numbers = [1, 2, 3, 4, 5];
+const filteredNumbers = numbers.filter(value => value > 3);
+console.log(filteredNumbers); // [4, 5]
