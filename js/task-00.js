@@ -1,4 +1,7 @@
-// Декларативный подход
-const numbers = [1, 2, 3, 4, 5];
-const filteredNumbers = numbers.filter(value => value > 3);
-console.log(filteredNumbers); // [4, 5]
+const output = document.querySelector('.output');
+let scrollEventCounter = 0;
+
+document.addEventListener('scroll', () => {
+    scrollEventCounter += 1;
+    output.textContent = scrollEventCounter;
+});
