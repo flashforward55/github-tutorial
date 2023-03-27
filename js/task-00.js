@@ -1,172 +1,21 @@
-// *рекурсия
-const arr = [1, 2, 3, [4, 5, [6, 7, [8, 9], 11, 12], 13], 14];
+const apikey = 'c78751ad2a1b6968019e8b5d53258129';
+const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=London&appid=${apikey}&units=metric`;
 
-function arraySum(arr) {
-    let sum = 0;
-    for (let i = 0; i < arr.length; i++) {
-        if (Array.isArray(arr[i])) {
-            sum += arraySum(arr[i]);
+fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+        if (data && data.weather && data.weather[0] && data.weather[0].icon) {
+            const weatherIcon = document.querySelector('.weather-icon');
+            const weatherTemp = document.querySelector('.weather-temp');
+            const weatherDescription = document.querySelector('.weather-description');
+            const weatherCity = document.querySelector('.weather-city');
+
+            weatherIcon.style.backgroundImage = `url('https://openweathermap.org/img/w/${data.weather[0].icon}.png')`;
+            weatherTemp.innerHTML = `${Math.round(data.main.temp)}<sup>°C</sup>`;
+            weatherDescription.innerHTML = data.weather[0].description;
+            weatherCity.innerHTML = data.name;
         } else {
-            sum += arr[i];
+            console.error('Error: Data is not in the expected format');
         }
-    }
-    return sum;
-}
-
-const result = arraySum(arr);
-console.log(result); // output: 93
-
-// *1. forEach
-// Аргументы коллбек-функции это значение текущего элемента element, его индекс index и сам исходный массив array
-
-arr.forEach((element, index, array) => {
-    // Тело коллбек-функции
-    console.log(element);
-});
-
-// Поэлементно перебирает массив.
-
-// Вызывает коллбек - функцию для каждого элемента массива.
-
-// Ничего не возвращает.
-
-// *2. map
-// Аргументы коллбек-функции это значение текущего элемента element, его индекс index и сам исходный массив array
-
-const planetsLengths = arr.map((element, index, array) => {
-    // Тело коллбек-функции
-    return element.length; //4
-});
-
-// Поэлементно перебирает оригинальный массив.
-
-// Не изменяет оригинальный массив.
-
-// Результат работа коллбек - функции записывается в новый массив - planetsLengths.
-
-// Возвращает новый массив такой же длины.
-
-// *3. flatMap - аналогичен методу map(), но применяется в случаях, когда результат это многомерный массив который необходимо «разгладить».
-// Аргументы коллбек-функции это значение текущего элемента element, его индекс index и сам исходный массив array
-
-const genres = array.flatMap((element, index, array) => {
-    // Тело коллбек-функции
-    return element.genres;
-});
-
-// *4. filter  - фильтрации массива, то есть когда необходимо выбрать более одного элемента из коллекции по какому-то критерию.
-// Аргументы коллбек-функции это значение текущего элемента element, его индекс index и сам исходный массив array
-
-const numbers = arr.filter((element, index, array) => {
-    // Тело коллбек-функции
-    return element === element % 2;
-});
-
-// Не изменяет оригинальный массив.
-
-// Поэлементно перебирает оригинальный массив.
-
-// Возвращает новый массив.
-
-// Добавляет в возвращаемый массив элементы которые удовлетворяют условию коллбек-функции.
-
-// Если коллбек вернул true элемент добавляется в возвращаемый массив.
-
-// Если коллбек вернул false элемент не добавляется в возвращаемый массив.
-
-// Если ни один элемент не удовлетворил условию, возвращает пустой массив.
-
-// *5. find - позволяет найти и вернуть первый подходящий элемент, после чего перебор массива прекращается.То есть он ищет до первого совпадения.
-// *5.1 findIndex - находит и возвращает индекс первый подходящего элемент массива. Синтаксис такой же как и у метода find.
-const bookWithTitle = array.find((element, index, array) => {
-    // Тело коллбек-функции
-    return element.title === BOOK_TITLE;
-});
-
-// Не изменяет оригинальный массив.
-
-// Поэлементно перебирает оригинальный массив.
-
-// Возвращает первый элемент удовлетворяющий условию, то есть когда коллбек возвращает true.
-
-// Если ни один элемент не подошёл, то есть для всех элементов коллбек вернул false, метод возвращает undefined.
-
-// *6. every - проверяет проходят ли все элементы массива тест предоставляемый коллбек - функцией.Возвращает true или false.
-
-const eachElementInSecondIsEven = array.every((element, index, array) => {
-    // Тело коллбек-функции
-    return element % 2 !== 0;
-});
-
-// Не изменяет оригинальный массив.
-
-// Поэлементно перебирает оригинальный массив.
-
-// Возвращает true если все элементы массива удовлетворяют условию.
-
-// Возвращает false если хотя бы один элемент массива не удовлетворяет условию.
-
-// Перебор массива прекращается если коллбек возвращает false.
-
-// *7. some - проверяет проходит ли хотя бы один элемент массива тест предоставляемый коллбек - функцией.Возвращает true или false.
-
-const anyElementInSecondIsEven = array.some((element, index, array) => {
-    // Callback function body
-    return element % 2 === 0;
-});
-
-// Не изменяет оригинальный массив.
-
-// Поэлементно перебирает оригинальный массив.
-
-// Возвращает true если хотя бы один элемент массива удовлетворяет условию.
-
-// Возвращает false если ни один элемент массив не удовлетворяет условию.
-
-// Перебор массива прекращается если коллбек возвращает true.
-
-// *8. reduce - используется для последовательной обработки каждого элемента массива с сохранением промежуточного результата, как аккумулятор.
-
-const totalPlayTime = array.reduce((acc, element, index, array) => {
-    // Тело коллбек-функции
-    return acc + element;
-}, initialValue);
-
-// Не изменяет оригинальный массив.
-
-// Поэлементно перебирает оригинальный массив.
-
-// Возвращает что угодно.
-
-// Делает что угодно.
-
-// *9. sort - сортирует элементы массива, но в отличии от остальных перебирающих методов, он сортирует исходный массив.
-
-arr.sort((a, b) => {
-    // Callback function body
-    // a - первый элемент для сравнения.
-    // b - второй элемент для сравнения.
-});
-
-const ascendingReleaseDates = [...arr].sort((a, b) => a - b);
-
-const authorsInAlphabetOrder = [...authors].sort((a, b) => a.localeCompare(b));
-
-// Для сортировки строк в алфавитном порядке, по возрастанию или убыванию, используется метод строк localeCompare().
-
-// Сортирует и изменяет исходный массив.
-
-// Возвращает изменённый массив, то есть ссылку на отсортированный исходный.
-
-// По умолчанию сортирует по возрастанию.
-
-// Сортировка происходит путём приведения значений к строке и сравнения порядковых номеров в таблице Unicode.
-
-// *10.  Стрелочные функции
-//     Если параметров несколько, то они перечисляются через запятую в круглых скобках, между знаками равно = и стрелкой =>.
-
-const add = (a, b, c) => {
-    return a + b + c;
-};
-
-const ddd = (a, b, c) => a + b + c;
+    })
+    .catch(error => console.error(error));
