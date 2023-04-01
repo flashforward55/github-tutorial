@@ -1,21 +1,57 @@
-const apikey = 'c78751ad2a1b6968019e8b5d53258129';
-const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Kryvyi Rih&appid=${apikey}&units=metric`;
+const products = [
+    {
+        id: 'sku1',
+        qty: 1,
+    },
+    {
+        id: 'sku2',
+        qty: 2,
+    },
+    {
+        id: 'sku3',
+        qty: 3,
+    },
+    {
+        id: 'sku1',
+        qty: 6,
+    },
+    {
+        id: 'sku1',
+        qty: 8,
+    },
+    {
+        id: 'sku1',
+        qty: 6,
+    },
+    {
+        id: 'sku2',
+        qty: 19,
+    },
+    {
+        id: 'sku4',
+        qty: 1,
+    },
+    {
+        id: 'sku1',
+        qty: 8,
+    },
+];
+function combineProducts(products) {
+    const productMap = {};
 
-fetch(apiUrl)
-    .then(response => response.json())
-    .then(data => {
-        if (data && data.weather && data.weather[0] && data.weather[0].icon) {
-            const weatherIcon = document.querySelector('.weather-icon');
-            const weatherTemp = document.querySelector('.weather-temp');
-            const weatherDescription = document.querySelector('.weather-description');
-            const weatherCity = document.querySelector('.weather-city');
-            console.log(data);
-            weatherIcon.style.backgroundImage = `url('https://openweathermap.org/img/w/${data.weather[0].icon}.png')`;
-            weatherTemp.innerHTML = `${Math.round(data.main.temp)}<sup>°C</sup>`;
-            weatherDescription.innerHTML = data.weather[0].description;
-            weatherCity.innerHTML = data.name;
+    products.forEach(product => {
+        const { id, qty } = product;
+
+        if (!productMap[id]) {
+            productMap[id] = { ...product };
         } else {
-            console.error('Error: Data is not in the expected format');
+            productMap[id].qty += qty;
         }
-    })
-    .catch(error => console.error(error));
+    });
+
+    const combinedProducts = Object.values(productMap);
+
+    products.splice(0, products.length, ...combinedProducts);
+}
+combineProducts(products);
+console.log(products);
