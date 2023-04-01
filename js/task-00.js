@@ -1,57 +1,42 @@
-const products = [
-    {
-        id: 'sku1',
-        qty: 1,
-    },
-    {
-        id: 'sku2',
-        qty: 2,
-    },
-    {
-        id: 'sku3',
-        qty: 3,
-    },
-    {
-        id: 'sku1',
-        qty: 6,
-    },
-    {
-        id: 'sku1',
-        qty: 8,
-    },
-    {
-        id: 'sku1',
-        qty: 6,
-    },
-    {
-        id: 'sku2',
-        qty: 19,
-    },
-    {
-        id: 'sku4',
-        qty: 1,
-    },
-    {
-        id: 'sku1',
-        qty: 8,
-    },
-];
-function combineProducts(products) {
-    const productMap = {};
+const colorPalette = document.querySelector('.color-palette');
+const output = document.querySelector('.output');
 
-    products.forEach(product => {
-        const { id, qty } = product;
+colorPalette.addEventListener('click', selectColor);
 
-        if (!productMap[id]) {
-            productMap[id] = { ...product };
-        } else {
-            productMap[id].qty += qty;
-        }
-    });
+// This is where delegation «magic» happens
+function selectColor(event) {
+    if (event.target.nodeName !== 'BUTTON') {
+        return;
+    }
 
-    const combinedProducts = Object.values(productMap);
-
-    products.splice(0, products.length, ...combinedProducts);
+    const selectedColor = event.target.dataset.color;
+    output.textContent = `Selected color: ${selectedColor}`;
+    output.style.color = selectedColor;
 }
-combineProducts(products);
-console.log(products);
+
+// Some helper functions to render palette items
+createPaletteItems();
+
+function createPaletteItems() {
+    const items = [];
+    for (let i = 0; i < 60; i++) {
+        const colors = getRandomColor();
+        const item = document.createElement('button');
+        item.type = 'button';
+        item.dataset.color = colors;
+        item.style.backgroundColor = colors;
+        item.classList.add('item');
+        items.push(item);
+    }
+    colorPalette.append(...items);
+}
+
+function getRandomColor() {
+    return `#${getRandomHex()}${getRandomHex()}${getRandomHex()}`;
+}
+
+function getRandomHex() {
+    return Math.round(Math.random() * 256)
+        .toString(16)
+        .padStart(2, '0');
+}

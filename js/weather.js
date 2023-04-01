@@ -19,3 +19,37 @@ fetch(apiUrl)
         }
     })
     .catch(error => console.error(error));
+
+/*  <div class="weather-widget">
+        <h2>Current Weather</h2>
+        <div class="weather-icon"></div>
+        <div class="weather-info">
+            <p class="weather-temp"></p>
+            <p class="weather-description"></p>
+            <p class="weather-city"></p>
+        </div>
+    </div>;
+
+
+    .weather-widget {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    width: 300px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    margin: 0 auto;
+}
+
+.weather-icon {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.weather-info {
+    margin-top: 20px;
+} */
