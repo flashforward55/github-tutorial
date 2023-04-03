@@ -1,42 +1,37 @@
-const colorPalette = document.querySelector('.color-palette');
-const output = document.querySelector('.output');
+const fetchUsersBtn = document.querySelector('.btn');
+let userList = document.querySelector('.user-list');
 
-colorPalette.addEventListener('click', selectColor);
-
-// This is where delegation «magic» happens
-function selectColor(event) {
-    if (event.target.nodeName !== 'BUTTON') {
-        return;
+fetchUsersBtn.addEventListener('click', async () => {
+    try {
+        const users = await fetchUsers();
+        renderUserListItems(users);
+    } catch (error) {
+        console.log(error.message);
     }
+});
 
-    const selectedColor = event.target.dataset.color;
-    output.textContent = `Selected color: ${selectedColor}`;
-    output.style.color = selectedColor;
+async function fetchUsers() {
+    const baseUrl = 'https://jsonplaceholder.typicode.com';
+    const userIds = [1, 2, 3, 4, 5];
+
+    const arrayOfPromises = userIds.map(async userId => {
+        const response = await fetch(`${baseUrl}/users/${userId}`);
+        return response.json();
+    });
+
+    const users = await Promise.all(arrayOfPromises);
+    return users;
 }
 
-// Some helper functions to render palette items
-createPaletteItems();
-
-function createPaletteItems() {
-    const items = [];
-    for (let i = 0; i < 60; i++) {
-        const colors = getRandomColor();
-        const item = document.createElement('button');
-        item.type = 'button';
-        item.dataset.color = colors;
-        item.style.backgroundColor = colors;
-        item.classList.add('item');
-        items.push(item);
-    }
-    colorPalette.append(...items);
-}
-
-function getRandomColor() {
-    return `#${getRandomHex()}${getRandomHex()}${getRandomHex()}`;
-}
-
-function getRandomHex() {
-    return Math.round(Math.random() * 256)
-        .toString(16)
-        .padStart(2, '0');
+function renderUserListItems(users) {
+    const markup = users
+        .map(
+            user => `<li class="item">
+        <p><b>Name</b>: ${user.name}</p>
+        <p><b>Email</b>: ${user.email}</p>
+        <p><b>Company</b>: ${user.company.name}</p>
+      </li>`,
+        )
+        .join('');
+    userList.innerHTML = markup;
 }
