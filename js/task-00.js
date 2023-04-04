@@ -1,5 +1,5 @@
 const fetchUsersBtn = document.querySelector('.btn');
-let userList = document.querySelector('.user-list');
+const userList = document.querySelector('.user-list');
 
 fetchUsersBtn.addEventListener('click', async () => {
     try {
@@ -35,3 +35,21 @@ function renderUserListItems(users) {
         .join('');
     userList.innerHTML = markup;
 }
+
+const postToAdd = {
+    author: 'Mango',
+    body: 'CRUD is awesome',
+};
+
+const options = {
+    method: 'POST',
+    body: JSON.stringify(postToAdd),
+    headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+    },
+};
+
+fetch('https://jsonplaceholder.typicode.com/posts', options)
+    .then(response => response.json())
+    .then(post => console.log(post))
+    .catch(error => console.log(error));
